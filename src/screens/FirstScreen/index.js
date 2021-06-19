@@ -77,17 +77,22 @@ const PageHeader = ({ title, navigation }) => {
         </>
     );
 };
-const ItemContent = ({ item }) => {
-    const { content, photo, title } = item;
-    return (
-        <View style={{ backgroundColor: 'transparent' }}>
-            <BackGroundImage source={{ uri: photo }}>
-                <ItemContentTitle>{title}</ItemContentTitle>
-            </BackGroundImage>
-            <ItemContentText>{content}</ItemContentText>
-        </View>
-    );
-};
+const ItemContent = React.memo(
+    ({ item }) => {
+        const { content, photo, title } = item;
+        return (
+            <View style={{ backgroundColor: 'transparent' }}>
+                <BackGroundImage source={{ uri: photo }}>
+                    <ItemContentTitle>{title}</ItemContentTitle>
+                </BackGroundImage>
+                <ItemContentText>{content}</ItemContentText>
+            </View>
+        );
+    },
+    (prevProps, nextProps) => {
+        return prevProps.item?.id === nextProps.item?.id;
+    },
+);
 const FirstScreen = ({ navigation, route }) => {
     //= ========Hook Init===========
     //= ========= Props Section========
