@@ -1,0 +1,62 @@
+module.exports = {
+    root: true,
+    env: {
+        es6: true,
+        browser: true,
+        amd: true,
+    },
+    plugins: ['react', 'react-native', 'react-hooks', 'prettier'],
+    extends: [
+        'eslint:recommended',
+        'airbnb',
+        'airbnb/hooks',
+        'plugin:react/recommended',
+        '@react-native-community',
+        'plugin:react-hooks/recommended',
+        'plugin:prettier/recommended',
+        'prettier',
+    ],
+    rules: {
+        'react-hooks/rules-of-hooks': 'error',
+        'import/no-cycle': [2, { maxDepth: 1 }],
+        'react-hooks/exhaustive-deps': 'warn',
+        'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+        'import/no-extraneous-dependencies': [
+            'error',
+            {
+                devDependencies: true,
+                optionalDependencies: false,
+                peerDependencies: false,
+            },
+        ],
+        'react/prop-types': 'off',
+        'import/prefer-default-export': 'off',
+        'react/jsx-props-no-spreading': 'off',
+        'no-param-reassign': [2, { props: false }],
+        'prettier/prettier': 'error',
+        'react/no-unescaped-entities': ['error', { forbid: ['>', '}'] }],
+        'global-require': 0,
+    },
+    settings: {
+        'import/extensions': ['.js', '.jsx'],
+        'import/resolver': {
+            'babel-module': {},
+            node: {
+                extensions: ['.js', '.jsx'],
+                paths: ['./src'],
+                alias: {
+                    '@src': './src',
+                    '@assets': './src/assets',
+                    '@components': './src/components',
+                    '@containers': './src/containers',
+                    '@modules': './src/modules',
+                    '@screens': './src/screens',
+                    '@store': './src/store',
+                    '@utils': './src/utils',
+                    '@theme': './src/theme',
+                    '@common': './src/common',
+                },
+            },
+        },
+    },
+};
